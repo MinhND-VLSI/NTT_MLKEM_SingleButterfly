@@ -6,7 +6,7 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = project.v ntt_top.v single_butterfly.v ntt_fsm_rom.v nmi_reorder.v mod_multiplier.v mod_add_sub_div2.v
 
 ifneq ($(GATES),yes)
 
