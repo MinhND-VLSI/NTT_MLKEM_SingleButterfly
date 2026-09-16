@@ -1,5 +1,5 @@
-//KHỐI FSM ĐIỀU KHIỂN VÀ GIẢI MÃ ĐỊA CHỈ HỆ SỐ XOAY
-//Quản lý trạng thái xử lý 7 tầng biến đổi của NTT/INTT (Stage 1 -> Stage 7).
+// KHỐI FSM ĐIỀU KHIỂN VÀ GIẢI MÃ ĐỊA CHỈ HỆ SỐ XOAY
+// Quản lý trạng thái xử lý 7 tầng biến đổi của NTT/INTT (Stage 1 -> Stage 7).
 // - Đếm 128 bước xử lý cho mỗi tầng (Tổng: 7 tầng * 128 bước = 896 chu kỳ clock).
 // - Điều khiển cấu hình trễ cho khối NMI Reorder qua tín hiệu ctrl_d:
 // + Stage 1: ctrl_d = 2'b00 (Trễ 4D)
@@ -26,7 +26,8 @@ module ntt_fsm_rom (
     //thêm sau bộ tạo hệ số xoay
     reg [11:0] twiddle_rom [0:127];
     initial begin
-$readmemh("../../../src/twiddle_factors.hex", rom_twiddle);    end
+        $readmemh("../../../src/twiddle_factors.hex", twiddle_rom); 
+    end
     
     reg [6:0] base_addr; //base_adder = 2^(current_stage - 1)
     reg [6:0] group_index; //group_index = step_cnt >> (8 - current_stage)
