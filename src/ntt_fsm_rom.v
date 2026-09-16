@@ -26,8 +26,8 @@ module ntt_fsm_rom (
     //thêm sau bộ tạo hệ số xoay
     reg [11:0] twiddle_rom [0:127];
     initial begin
-       $readmemh("../../src/twiddle_factors.hex", twiddle_rom);
-    end
+    $readmemh("twiddle_factors.hex", twiddle_rom); 
+end
     
     reg [6:0] base_addr; //base_adder = 2^(current_stage - 1)
     reg [6:0] group_index; //group_index = step_cnt >> (8 - current_stage)
